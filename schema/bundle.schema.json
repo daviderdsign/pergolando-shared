@@ -1,0 +1,579 @@
+{
+  "$ref": "#/definitions/PergolandoBundle",
+  "definitions": {
+    "PergolandoBundle": {
+      "type": "object",
+      "properties": {
+        "manifest": {
+          "type": "object",
+          "properties": {
+            "tenant_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nome_azienda": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bundle_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "data_export": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "schema_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "tenant_id",
+            "nome_azienda",
+            "bundle_version",
+            "data_export",
+            "schema_version"
+          ],
+          "additionalProperties": false
+        },
+        "catalog": {
+          "type": "object",
+          "properties": {
+            "database": {
+              "type": "object",
+              "properties": {
+                "prodotto": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "categoria": {
+                      "type": "string"
+                    },
+                    "categoria_en": {
+                      "type": "string"
+                    },
+                    "descrizione_it": {
+                      "type": "string"
+                    },
+                    "descrizione_en": {
+                      "type": "string"
+                    },
+                    "nota_tipologia": {
+                      "type": "string"
+                    },
+                    "brevetti": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "made_in": {
+                      "type": "string"
+                    },
+                    "colori": {
+                      "type": "object",
+                      "properties": {
+                        "struttura_e_lame": {
+                          "type": "object",
+                          "properties": {
+                            "standard": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "ral": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "nome_it": {
+                                    "type": "string"
+                                  },
+                                  "nome_en": {
+                                    "type": "string"
+                                  },
+                                  "finitura": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "supplemento": {
+                                    "type": "boolean"
+                                  },
+                                  "disponibile_a_magazzino": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": [
+                                  "ral",
+                                  "nome_it",
+                                  "nome_en"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "con_supplemento": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "nome_it": {
+                                    "type": "string"
+                                  },
+                                  "nome_en": {
+                                    "type": "string"
+                                  },
+                                  "supplemento": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": [
+                                  "nome_it",
+                                  "nome_en"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "nota": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "standard",
+                            "con_supplemento"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "parti_plastiche": {
+                          "type": "object",
+                          "properties": {
+                            "tag": {
+                              "type": "string"
+                            },
+                            "opzioni": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "nome_it": {
+                                    "type": "string"
+                                  },
+                                  "nome_en": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "nome_it",
+                                  "nome_en"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "vincolo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "opzioni"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "struttura_e_lame",
+                        "parti_plastiche"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "motorizzazione": {
+                      "type": "object",
+                      "properties": {
+                        "modelli": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "centralina": {
+                          "type": "object",
+                          "properties": {
+                            "modello": {
+                              "type": "string"
+                            },
+                            "obbligatoria_per": {
+                              "type": "string"
+                            },
+                            "moduli_max_per_centralina": {
+                              "type": "number"
+                            },
+                            "nota": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "modello",
+                            "obbligatoria_per",
+                            "moduli_max_per_centralina"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "nota_prezzi": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "modelli",
+                        "centralina"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "prodotti_complementari_non_modellati": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nome": {
+                            "type": "string"
+                          },
+                          "descrizione": {
+                            "type": "string"
+                          },
+                          "pagina_riferimento_catalogo_originale": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "nome",
+                          "descrizione"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "nota_scope": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "nome",
+                    "categoria",
+                    "categoria_en",
+                    "brevetti",
+                    "made_in",
+                    "colori"
+                  ],
+                  "additionalProperties": false
+                },
+                "sotto_modelli": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "descrizione_it": {
+                        "type": "string"
+                      },
+                      "vincoli_dimensionali": {
+                        "type": "object",
+                        "properties": {
+                          "L_max_modulo_cm": {
+                            "type": "number"
+                          },
+                          "P_min_cm": {
+                            "type": "number"
+                          },
+                          "P_max_cm": {
+                            "type": "number"
+                          },
+                          "H_max_cm": {
+                            "type": "number"
+                          },
+                          "passo_lama_cm": {
+                            "type": "number"
+                          },
+                          "moduli_max": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "L_max_modulo_cm",
+                          "P_min_cm",
+                          "P_max_cm",
+                          "H_max_cm",
+                          "passo_lama_cm",
+                          "moduli_max"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "opzioni_tecniche_lama": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "nome": {
+                              "type": "string"
+                            },
+                            "L_max_cm": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "nome",
+                            "L_max_cm"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "opzioni_tecniche": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "$ref": "#/definitions/PergolandoBundle/properties/catalog/properties/database/properties/sotto_modelli/additionalProperties/properties/opzioni_tecniche_lama/additionalProperties"
+                        }
+                      },
+                      "supplementi": {
+                        "type": "object",
+                        "properties": {
+                          "montante_h_soglia_cm": {
+                            "type": "number"
+                          },
+                          "montante_eur_per_m": {
+                            "type": "number"
+                          },
+                          "staffe_slide_glass_eur": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "montante_h_soglia_cm",
+                          "montante_eur_per_m"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "varianti_montaggio": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "nome": {
+                              "type": "string"
+                            },
+                            "orientamento_crescita": {
+                              "type": "string",
+                              "enum": [
+                                "L",
+                                "P"
+                              ]
+                            },
+                            "fissaggio": {
+                              "type": "string"
+                            },
+                            "moduli_min": {
+                              "type": "number"
+                            },
+                            "L_max_per_n_moduli": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "number"
+                              }
+                            },
+                            "P_max_per_n_moduli": {
+                              "$ref": "#/definitions/PergolandoBundle/properties/catalog/properties/database/properties/sotto_modelli/additionalProperties/properties/varianti_montaggio/additionalProperties/properties/L_max_per_n_moduli"
+                            },
+                            "detrazione_accoppiamento_eur": {
+                              "$ref": "#/definitions/PergolandoBundle/properties/catalog/properties/database/properties/sotto_modelli/additionalProperties/properties/varianti_montaggio/additionalProperties/properties/L_max_per_n_moduli"
+                            },
+                            "matrice_prezzi_ref": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "nota": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "nome",
+                            "orientamento_crescita",
+                            "fissaggio",
+                            "detrazione_accoppiamento_eur",
+                            "matrice_prezzi_ref"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "motore_incluso_nel_prezzo": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "nome",
+                      "vincoli_dimensionali",
+                      "supplementi",
+                      "varianti_montaggio",
+                      "motore_incluso_nel_prezzo"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "note_estrazione": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "prodotto",
+                "sotto_modelli"
+              ],
+              "additionalProperties": false
+            },
+            "price_matrices": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "P_riferimento": {
+                      "type": "number"
+                    },
+                    "lead_completo": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    "n_lame": {
+                      "type": "number"
+                    },
+                    "prezzi_per_L": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "number"
+                      }
+                    },
+                    "montante_intermedio": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "P_riferimento",
+                    "n_lame",
+                    "prezzi_per_L"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "required": [
+            "database",
+            "price_matrices"
+          ],
+          "additionalProperties": false
+        },
+        "branding": {
+          "type": "object",
+          "properties": {
+            "theme": {
+              "type": "object",
+              "properties": {
+                "nome_azienda": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "logo_path": {
+                  "type": "string"
+                },
+                "palette": {
+                  "type": "object",
+                  "properties": {
+                    "primario": {
+                      "type": "string"
+                    },
+                    "secondario": {
+                      "type": "string"
+                    },
+                    "testo": {
+                      "type": "string"
+                    },
+                    "sfondo": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "primario"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "nome_azienda",
+                "palette"
+              ],
+              "additionalProperties": false
+            },
+            "letterhead_path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "theme"
+          ],
+          "additionalProperties": false
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "foto",
+                  "rendering",
+                  "altro"
+                ]
+              },
+              "prodotto": {
+                "type": "string"
+              },
+              "sotto_modello": {
+                "type": "string"
+              },
+              "variante_montaggio": {
+                "type": "string"
+              },
+              "colore": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "tipo"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "manifest",
+        "catalog",
+        "branding"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

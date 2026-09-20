@@ -1,0 +1,255 @@
+[
+  {
+    "name": "single module, exact matrix hit, no supplements",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 190,
+      "L_richiesta_cm": 200,
+      "colore_struttura": "RAL 9010 Bianco semilucido",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Vision",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "standard",
+        "orientamento_crescita": "L",
+        "n_moduli": 1,
+        "L_modulo_cm": 200,
+        "P_modulo_cm": 190,
+        "L_totale_effettiva_cm": 200,
+        "P_totale_effettiva_cm": 190,
+        "n_lame": 8,
+        "voci_costo": [
+          {
+            "descrizione": "1 x modulo 200cm x 190cm (6427.00 EUR/modulo)",
+            "importo_eur": 6427
+          }
+        ],
+        "avvisi_count": 0,
+        "prezzo_totale_eur": 6427
+      }
+    }
+  },
+  {
+    "name": "2 moduli, supplemento colore + supplemento montante",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 900,
+      "colore_struttura": "Tiger Coating Colours Class 2",
+      "colore_plastica": "Grigio",
+      "altezza_montanti_cm": 260
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Vision",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "standard",
+        "orientamento_crescita": "L",
+        "n_moduli": 2,
+        "L_modulo_cm": 460,
+        "P_modulo_cm": 310,
+        "L_totale_effettiva_cm": 920,
+        "P_totale_effettiva_cm": 310,
+        "n_lame": 14,
+        "voci_costo": [
+          {
+            "descrizione": "2 x modulo 460cm x 310cm (10356.00 EUR/modulo)",
+            "importo_eur": 20712
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (2 moduli)",
+            "importo_eur": -542
+          },
+          {
+            "descrizione": "Supplemento montante H=260cm (>250cm)",
+            "importo_eur": 21.3
+          }
+        ],
+        "avvisi_count": 2,
+        "prezzo_totale_eur": 20191.3
+      }
+    }
+  },
+  {
+    "name": "4 moduli near max L",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 400,
+      "L_richiesta_cm": 1950,
+      "colore_struttura": "Corten",
+      "colore_plastica": "Corten",
+      "altezza_montanti_cm": 240
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Vision",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "standard",
+        "orientamento_crescita": "L",
+        "n_moduli": 4,
+        "L_modulo_cm": 500,
+        "P_modulo_cm": 410,
+        "L_totale_effettiva_cm": 2000,
+        "P_totale_effettiva_cm": 410,
+        "n_lame": 19,
+        "voci_costo": [
+          {
+            "descrizione": "4 x modulo 500cm x 410cm (12706.00 EUR/modulo)",
+            "importo_eur": 50824
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (4 moduli)",
+            "importo_eur": -1626
+          }
+        ],
+        "avvisi_count": 0,
+        "prezzo_totale_eur": 49198
+      }
+    }
+  },
+  {
+    "name": "explicit opzione_tecnica and n_moduli",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 250,
+      "L_richiesta_cm": 450,
+      "colore_struttura": "Grigio ferro",
+      "colore_plastica": "Grigio ferro",
+      "altezza_montanti_cm": 180,
+      "opzione_tecnica": "standard",
+      "n_moduli": 1
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Vision",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "standard",
+        "orientamento_crescita": "L",
+        "n_moduli": 1,
+        "L_modulo_cm": 460,
+        "P_modulo_cm": 250,
+        "L_totale_effettiva_cm": 460,
+        "P_totale_effettiva_cm": 250,
+        "n_lame": 11,
+        "voci_costo": [
+          {
+            "descrizione": "1 x modulo 460cm x 250cm (9399.00 EUR/modulo)",
+            "importo_eur": 9399
+          }
+        ],
+        "avvisi_count": 0,
+        "prezzo_totale_eur": 9399
+      }
+    }
+  },
+  {
+    "name": "row with montante_intermedio flag (P >= 630)",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 640,
+      "L_richiesta_cm": 300,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Vision",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "standard",
+        "orientamento_crescita": "L",
+        "n_moduli": 1,
+        "L_modulo_cm": 300,
+        "P_modulo_cm": 650,
+        "L_totale_effettiva_cm": 300,
+        "P_totale_effettiva_cm": 650,
+        "n_lame": 31,
+        "voci_costo": [
+          {
+            "descrizione": "1 x modulo 300cm x 650cm (12926.00 EUR/modulo)",
+            "importo_eur": 12926
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 12926
+      }
+    }
+  },
+  {
+    "name": "error: altezza exceeds H_max_cm",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 400,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 280
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Altezza richiesta (280 cm) supera il massimo per Vision (270 cm)."
+    }
+  },
+  {
+    "name": "error: L exceeds max for 4 moduli",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 2100,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": false,
+      "error_message": "L richiesta (2100 cm) supera il massimo per 4 moduli (2000 cm)."
+    }
+  },
+  {
+    "name": "error: invalid colore_struttura",
+    "input": {
+      "sotto_modello": "standard",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 400,
+      "colore_struttura": "Colore Inesistente",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Colore struttura 'Colore Inesistente' non valido. Disponibili: ['Corten', 'Grigio ferro', 'RAL 1013 Avorio sablé', 'RAL 1013 Avorio semilucido', 'RAL 9006 Alluminio brillante opaco', 'RAL 9006 Grigio sablé', 'RAL 9010 Bianco semilucido', 'RAL 9016 Bianco sablé', 'RAL altro', 'Tiger Coating Colours Class 2']"
+    }
+  },
+  {
+    "name": "error: invalid sotto_modello",
+    "input": {
+      "sotto_modello": "premium",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 400,
+      "colore_struttura": "Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Sotto-modello 'premium' non trovato. Disponibili: ['standard']"
+    }
+  }
+]

@@ -1,0 +1,445 @@
+{
+  "prodotto": {
+    "nome": "Brera",
+    "categoria": "Pergola bioclimatica motorizzata a lame frangisole retraibili (impacchettabili)",
+    "categoria_en": "Motorized bioclimatic pergola with retractable/packable blades",
+    "nota_tipologia": "A differenza di Vision (lame orientabili fisse in sede), Brera ha lame che si IMPACCHETTANO scorrendo verso un lato, come una tapparella orizzontale.",
+    "made_in": "Italy",
+    "brevetti": [
+      "domande di brevetto depositate / patents pending"
+    ],
+    "colori": {
+      "struttura_e_lame": {
+        "standard": [
+          {
+            "ral": "RAL 9016",
+            "nome_it": "Bianco sablé",
+            "nome_en": "White sand"
+          },
+          {
+            "ral": "RAL 1013",
+            "nome_it": "Avorio sablé",
+            "nome_en": "Ivory sand"
+          },
+          {
+            "ral": "RAL 9006",
+            "nome_it": "Grigio sablé",
+            "nome_en": "Grey sand"
+          },
+          {
+            "ral": "RAL 9010",
+            "nome_it": "Bianco semilucido",
+            "nome_en": "White semi-gloss"
+          },
+          {
+            "ral": "RAL 1013",
+            "nome_it": "Avorio semilucido",
+            "nome_en": "Ivory semi-gloss"
+          },
+          {
+            "ral": "RAL 9006",
+            "nome_it": "Alluminio brillante opaco",
+            "nome_en": "Bright aluminium matt"
+          },
+          {
+            "ral": null,
+            "nome_it": "Grigio ferro",
+            "nome_en": "Iron grey"
+          },
+          {
+            "ral": null,
+            "nome_it": "Corten",
+            "nome_en": "Corten"
+          }
+        ],
+        "con_supplemento": [
+          {
+            "nome_it": "Tiger Coating Colours Class 2",
+            "nome_en": "Tiger Coating Colours Class 2"
+          },
+          {
+            "nome_it": "RAL altro",
+            "nome_en": "RAL other"
+          }
+        ],
+        "nota": "Identica alla gamma colori di Vision. Condivisa fra i sotto-modelli Brera P e Brera S (verificato dal catalogo: elenco colori identico su entrambe le schede)."
+      },
+      "parti_plastiche": {
+        "tag": "B2B",
+        "opzioni": [
+          {
+            "nome_it": "Bianco",
+            "nome_en": "White"
+          },
+          {
+            "nome_it": "Avorio",
+            "nome_en": "Ivory"
+          },
+          {
+            "nome_it": "Grigio",
+            "nome_en": "Grey"
+          },
+          {
+            "nome_it": "Grigio ferro",
+            "nome_en": "Iron grey"
+          },
+          {
+            "nome_it": "Corten",
+            "nome_en": "Corten"
+          }
+        ],
+        "vincolo": "Le parti in plastica non sono verniciabili e sono disponibili esclusivamente nelle colorazioni indicate."
+      }
+    },
+    "motorizzazione": {
+      "modelli": [
+        "Teleco 571",
+        "IO 696"
+      ],
+      "centralina": {
+        "modello": "Centralina 322",
+        "obbligatoria_per": "Teleco 571",
+        "moduli_max_per_centralina": 2,
+        "nota": "Ogni centralina Teleco può comandare al massimo 2 moduli; oltre servono più centraline."
+      },
+      "nota_prezzi": "I prezzi di motori e centralina non sono riportati in questo estratto di catalogo (rimandano a 'Automatismi p.99', pagina non inclusa nel PDF fornito). A differenza di Vision (motore incluso nel prezzo modulo), per Brera il costo di motorizzazione è ESPLICITAMENTE ESCLUSO dal prezzo a matrice: va aggiunto a parte. Da richiedere all'azienda prima di generare preventivi reali."
+    },
+    "prodotti_complementari_non_modellati": [
+      {
+        "nome": "Raso",
+        "descrizione": "Tenda verticale a scorrimento su guide, integrabile nel montante; ha una propria scheda tecnica, colori, tessuti e listino a matrice (misura luce). Solo per Brera P.",
+        "pagina_riferimento_catalogo_originale": 80
+      },
+      {
+        "nome": "Slide Glass",
+        "descrizione": "Vetrata scorrevole perimetrale, equivalente a 'Serie Glass' di Vision.",
+        "pagina_riferimento_catalogo_originale": 88
+      },
+      {
+        "nome": "LED Line",
+        "descrizione": "Illuminazione LED perimetrale integrata.",
+        "pagina_riferimento_catalogo_originale": 94
+      }
+    ],
+    "nota_scope": "Il catalogo fornito descrive in dettaglio solo Brera P e Brera S. Brera B compare unicamente nelle tabelle comparative riassuntive (dimensioni, imballaggio, resistenza al vento) ma non ha una propria scheda di configurazione/prezzi in questo PDF (nel catalogo originale sarebbe a pag. 70, non inclusa in questo estratto)."
+  },
+  "sotto_modelli": {
+    "P": {
+      "nome": "Brera P",
+      "descrizione_it": "Pergola bioclimatica motorizzata in alluminio con lame frangisole retraibili. Completabile con tende verticali Raso e vetrate Slide Glass. Sistema di drenaggio e convogliamento acque piovane con gronde a scarico integrato nei montanti. Premontaggio di serie di struttura e parti elettriche.",
+      "vincoli_dimensionali": {
+        "L_max_modulo_cm": 450,
+        "P_min_cm": 210,
+        "P_max_cm": 610,
+        "H_max_cm": 300,
+        "passo_lama_cm": 20,
+        "moduli_max": 4
+      },
+      "opzioni_tecniche_lama": {
+        "H20": {
+          "nome": "Lama H20",
+          "L_max_cm": 350
+        },
+        "H30": {
+          "nome": "Lama H30",
+          "L_max_cm": 450
+        }
+      },
+      "supplementi": {
+        "montante_h_soglia_cm": 250,
+        "montante_eur_per_m": 98,
+        "staffe_slide_glass_eur": 70
+      },
+      "varianti_montaggio": {
+        "01L": {
+          "nome": "01L autoportante",
+          "orientamento_crescita": "L",
+          "fissaggio": "autoportante",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 0,
+            "2": 758,
+            "3": 1516,
+            "4": 2274
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_L_H20",
+            "H30": "P_L_H30"
+          }
+        },
+        "02L": {
+          "nome": "02L a muro lato larghezza L",
+          "orientamento_crescita": "L",
+          "fissaggio": "muro_lato_L",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 758,
+            "2": 1895,
+            "3": 3032,
+            "4": 4169
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_L_H20",
+            "H30": "P_L_H30"
+          },
+          "nota": "Il valore anche a 1 modulo (758) non è uno sconto di accoppiamento in senso stretto ma riflette la differenza costruttiva della versione a muro rispetto alla base autoportante da cui è derivato il prezzo di matrice — da confermare con l'azienda."
+        },
+        "03L": {
+          "nome": "03L a muro lato profondità P",
+          "orientamento_crescita": "L",
+          "fissaggio": "muro_lato_P",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 758,
+            "2": 1516,
+            "3": 2274,
+            "4": 3032
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_L_H20",
+            "H30": "P_L_H30"
+          },
+          "nota": "Capacità di scarico acqua ridotta rispetto allo standard (da scheda tecnica)."
+        },
+        "01P": {
+          "nome": "01P autoportante",
+          "orientamento_crescita": "P",
+          "fissaggio": "autoportante",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1190,
+            "3": 1780,
+            "4": 2370
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 758,
+            "3": 1516,
+            "4": 2274
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_P_H20",
+            "H30": "P_P_H30"
+          },
+          "nota": "Non disponibile a 1 modulo in questo catalogo (parte da 2 moduli)."
+        },
+        "02P": {
+          "nome": "02P a muro con profilo lato larghezza L",
+          "orientamento_crescita": "P",
+          "fissaggio": "muro_lato_L",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1195,
+            "3": 1785,
+            "4": 2375
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 1516,
+            "3": 2274,
+            "4": 3032
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_P_H20",
+            "H30": "P_P_H30"
+          }
+        },
+        "03P": {
+          "nome": "03P a muro lato profondità P",
+          "orientamento_crescita": "P",
+          "fissaggio": "muro_lato_P",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1200,
+            "3": 1790,
+            "4": 2380
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 1895,
+            "3": 3032,
+            "4": 4169
+          },
+          "matrice_prezzi_ref": {
+            "H20": "P_P_H20",
+            "H30": "P_P_H30"
+          },
+          "nota": "Capacità di scarico acqua ridotta rispetto allo standard."
+        }
+      },
+      "motore_incluso_nel_prezzo": false
+    },
+    "S": {
+      "nome": "Brera S",
+      "descrizione_it": "Pergola bioclimatica motorizzata in alluminio con lame frangisole retraibili. Completabile con vetrate Slide Glass (non disponibile Raso su Brera S, a differenza di Brera P). Sistema di drenaggio e convogliamento acque piovane con gronde a scarico integrato nei montanti.",
+      "vincoli_dimensionali": {
+        "L_max_modulo_cm": 450,
+        "P_min_cm": 200,
+        "P_max_cm": 600,
+        "H_max_cm": 270,
+        "passo_lama_cm": 20,
+        "moduli_max": 4
+      },
+      "opzioni_tecniche_lama": {
+        "H20": {
+          "nome": "Lama H20",
+          "L_max_cm": 350
+        },
+        "H30": {
+          "nome": "Lama H30",
+          "L_max_cm": 450
+        }
+      },
+      "supplementi": {
+        "montante_h_soglia_cm": 250,
+        "montante_eur_per_m": 71,
+        "staffe_slide_glass_eur": 70
+      },
+      "varianti_montaggio": {
+        "01L": {
+          "nome": "01L autoportante",
+          "orientamento_crescita": "L",
+          "fissaggio": "autoportante",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 0,
+            "2": 542,
+            "3": 1084,
+            "4": 1626
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_L_H20",
+            "H30": "S_L_H30"
+          }
+        },
+        "02L": {
+          "nome": "02L a muro con profilo lato larghezza L",
+          "orientamento_crescita": "L",
+          "fissaggio": "muro_lato_L",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 542,
+            "2": 1355,
+            "3": 2168,
+            "4": 2981
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_L_H20",
+            "H30": "S_L_H30"
+          }
+        },
+        "03L": {
+          "nome": "03L a muro lato profondità P",
+          "orientamento_crescita": "L",
+          "fissaggio": "muro_lato_P",
+          "L_max_per_n_moduli": {
+            "1": 450,
+            "2": 900,
+            "3": 1350,
+            "4": 1800
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 542,
+            "2": 1084,
+            "3": 1626,
+            "4": 2618
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_L_H20",
+            "H30": "S_L_H30"
+          },
+          "nota": "Capacità di scarico acqua ridotta rispetto allo standard."
+        },
+        "01P": {
+          "nome": "01P autoportante",
+          "orientamento_crescita": "P",
+          "fissaggio": "autoportante",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1200,
+            "3": 1790,
+            "4": 2380
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 542,
+            "3": 1084,
+            "4": 1626
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_P_H20",
+            "H30": "S_P_H30"
+          }
+        },
+        "02P": {
+          "nome": "02P a muro con profilo lato larghezza L",
+          "orientamento_crescita": "P",
+          "fissaggio": "muro_lato_L",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1190,
+            "3": 1780,
+            "4": 2370
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 1084,
+            "3": 1626,
+            "4": 2168
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_P_H20",
+            "H30": "S_P_H30"
+          }
+        },
+        "03P": {
+          "nome": "03P a muro lato profondità P",
+          "orientamento_crescita": "P",
+          "fissaggio": "muro_lato_P",
+          "moduli_min": 2,
+          "P_max_per_n_moduli": {
+            "2": 1190,
+            "3": 1780,
+            "4": 2370
+          },
+          "detrazione_accoppiamento_eur": {
+            "2": 1355,
+            "3": 2168,
+            "4": 2981
+          },
+          "matrice_prezzi_ref": {
+            "H20": "S_P_H20",
+            "H30": "S_P_H30"
+          },
+          "nota": "Capacità di scarico acqua ridotta rispetto allo standard."
+        }
+      },
+      "motore_incluso_nel_prezzo": false
+    }
+  },
+  "note_estrazione": [
+    "Le matrici prezzo (file brera_price_matrices.json) sono condivise fra le tre varianti di montaggio con lo stesso orientamento (es. 01L/02L/03L usano tutte P_L_H20 o P_L_H30): il catalogo lo conferma esplicitamente in testa a ciascuna tabella prezzi ('01L 02L 03L'). A differenziare le varianti sono solo i vincoli dimensionali e la detrazione per accoppiamento.",
+    "Per le varianti orientate su P (01P/02P/03P), il catalogo non riporta una configurazione a 1 modulo: si parte da 2.",
+    "I prezzi di motori/centralina non sono nel PDF fornito (rimandano a pagina non inclusa)."
+  ]
+}

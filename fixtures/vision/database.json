@@ -1,0 +1,175 @@
+{
+  "prodotto": {
+    "nome": "Vision",
+    "categoria": "Pergola bioclimatica motorizzata",
+    "categoria_en": "Motorized bioclimatic pergola",
+    "descrizione_it": "Pergola bioclimatica motorizzata con lame frangisole orientabili. Pergola con sistema di drenaggio e convogliamento delle acque piovane. Gronde con scarico integrato nei montanti. Premontaggio di serie della pergola e delle parti elettriche.",
+    "descrizione_en": "Motorized bioclimatic pergola with louvered adjustable blades. Pergola with water drainage and piping for rain water. Gutter with drain integrated in the uprights. Standard pre-assembly of the pergola and the electrical parts.",
+    "brevetti": [
+      "PATENT PENDING",
+      "EP PATENT PENDING"
+    ],
+    "made_in": "Italy",
+    "colori": {
+      "struttura_e_lame": {
+        "standard": [
+          {
+            "ral": "RAL 9016",
+            "nome_it": "Bianco sablé",
+            "nome_en": "White sand",
+            "finitura": "sablé",
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": "RAL 1013",
+            "nome_it": "Avorio sablé",
+            "nome_en": "Ivory sand",
+            "finitura": "sablé",
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": "RAL 9006",
+            "nome_it": "Grigio sablé",
+            "nome_en": "Grey sand",
+            "finitura": "sablé",
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": "RAL 9010",
+            "nome_it": "Bianco semilucido",
+            "nome_en": "White semi-gloss",
+            "finitura": "semilucido",
+            "supplemento": false,
+            "disponibile_a_magazzino": true
+          },
+          {
+            "ral": "RAL 1013",
+            "nome_it": "Avorio semilucido",
+            "nome_en": "Ivory semi-gloss",
+            "finitura": "semilucido",
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": "RAL 9006",
+            "nome_it": "Alluminio brillante opaco",
+            "nome_en": "Bright aluminium matt",
+            "finitura": "opaco",
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": null,
+            "nome_it": "Grigio ferro",
+            "nome_en": "Iron grey",
+            "finitura": null,
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          },
+          {
+            "ral": null,
+            "nome_it": "Corten",
+            "nome_en": "Corten",
+            "finitura": null,
+            "supplemento": false,
+            "disponibile_a_magazzino": false
+          }
+        ],
+        "con_supplemento": [
+          {
+            "nome_it": "Tiger Coating Colours Class 2",
+            "nome_en": "Tiger Coating Colours Class 2",
+            "supplemento": true
+          },
+          {
+            "nome_it": "RAL altro",
+            "nome_en": "RAL other",
+            "supplemento": true
+          }
+        ],
+        "nota": "La riproduzione dei colori a catalogo è indicativa. Il colore 'disponibile a magazzino' (solo RAL 9010 Bianco semilucido in questo esempio) è marcato con icona dedicata - utile per tempi di consegna rapidi."
+      },
+      "parti_plastiche": {
+        "tag": "B2B",
+        "opzioni": [
+          {
+            "nome_it": "Bianco",
+            "nome_en": "White"
+          },
+          {
+            "nome_it": "Avorio",
+            "nome_en": "Ivory"
+          },
+          {
+            "nome_it": "Grigio",
+            "nome_en": "Grey"
+          },
+          {
+            "nome_it": "Grigio ferro",
+            "nome_en": "Iron grey"
+          },
+          {
+            "nome_it": "Corten",
+            "nome_en": "Corten"
+          }
+        ],
+        "vincolo": "Le parti in plastica NON sono verniciabili e sono disponibili esclusivamente nelle 5 colorazioni indicate sopra (non tutte le combinazioni struttura+plastica del catalogo generale sono quindi valide: la plastica è limitata a questo sottoinsieme, la struttura ne ha 8+2)."
+      }
+    }
+  },
+  "sotto_modelli": {
+    "standard": {
+      "nome": "Vision",
+      "descrizione_it": "Pergola bioclimatica motorizzata con lame frangisole orientabili. Pergola con sistema di drenaggio e convogliamento delle acque piovane. Gronde con scarico integrato nei montanti. Premontaggio di serie della pergola e delle parti elettriche.",
+      "vincoli_dimensionali": {
+        "L_max_modulo_cm": 500,
+        "P_min_cm": 190,
+        "P_max_cm": 690,
+        "H_max_cm": 270,
+        "passo_lama_cm": 20,
+        "moduli_max": 4
+      },
+      "opzioni_tecniche_lama": {
+        "standard": {
+          "nome": "Standard (lama unica)",
+          "L_max_cm": 500
+        }
+      },
+      "supplementi": {
+        "montante_h_soglia_cm": 250,
+        "montante_eur_per_m": 71,
+        "staffe_slide_glass_eur": 70
+      },
+      "varianti_montaggio": {
+        "01L": {
+          "nome": "01L autoportante",
+          "orientamento_crescita": "L",
+          "fissaggio": "autoportante",
+          "L_max_per_n_moduli": {
+            "1": 500,
+            "2": 1000,
+            "3": 1500,
+            "4": 2000
+          },
+          "detrazione_accoppiamento_eur": {
+            "1": 0,
+            "2": 542,
+            "3": 1084,
+            "4": 1626
+          },
+          "matrice_prezzi_ref": {
+            "standard": "standard_L_standard"
+          }
+        }
+      },
+      "motore_incluso_nel_prezzo": true
+    }
+  },
+  "note_estrazione": [
+    "Alcune caratteristiche tecniche del prodotto sono tutelate da brevetti (PATENT PENDING, EP PATENT PENDING).",
+    "Questo non è un catalogo di 'componenti sciolti con codice' ma un listino a modulo/configurazione: il DB riflette questa struttura reale invece di forzare un modello a distinta base per pezzi."
+  ]
+}

@@ -1,0 +1,288 @@
+[
+  {
+    "name": "Brera P, 01L, H20 explicit, 1 modulo",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 200,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200,
+      "opzione_tecnica": "H20"
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera P",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "H20",
+        "orientamento_crescita": "L",
+        "n_moduli": 1,
+        "L_modulo_cm": 200,
+        "P_modulo_cm": 310,
+        "L_totale_effettiva_cm": 200,
+        "P_totale_effettiva_cm": 310,
+        "n_lame": 13,
+        "voci_costo": [
+          {
+            "descrizione": "1 x modulo 200cm x 310cm (9290.00 EUR/modulo)",
+            "importo_eur": 9290
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 9290
+      }
+    }
+  },
+  {
+    "name": "Brera P, 01L, auto opzione tecnica (forces H30), 2 moduli",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 900,
+      "colore_struttura": "RAL 1013 Avorio sablé",
+      "colore_plastica": "Avorio",
+      "altezza_montanti_cm": 220
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera P",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "H30",
+        "orientamento_crescita": "L",
+        "n_moduli": 2,
+        "L_modulo_cm": 450,
+        "P_modulo_cm": 310,
+        "L_totale_effettiva_cm": 900,
+        "P_totale_effettiva_cm": 310,
+        "n_lame": 13,
+        "voci_costo": [
+          {
+            "descrizione": "2 x modulo 450cm x 310cm (13298.00 EUR/modulo)",
+            "importo_eur": 26596
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (2 moduli)",
+            "importo_eur": -758
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 25838
+      }
+    }
+  },
+  {
+    "name": "Brera P, 02L (muro lato L), 3 moduli, H20 explicit",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "02L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 1000,
+      "colore_struttura": "RAL 9006 Grigio sablé",
+      "colore_plastica": "Grigio",
+      "altezza_montanti_cm": 200,
+      "opzione_tecnica": "H20"
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera P",
+        "variante_montaggio": "02L a muro lato larghezza L",
+        "opzione_tecnica": "H20",
+        "orientamento_crescita": "L",
+        "n_moduli": 3,
+        "L_modulo_cm": 340,
+        "P_modulo_cm": 310,
+        "L_totale_effettiva_cm": 1020,
+        "P_totale_effettiva_cm": 310,
+        "n_lame": 13,
+        "voci_costo": [
+          {
+            "descrizione": "3 x modulo 340cm x 310cm (11246.00 EUR/modulo)",
+            "importo_eur": 33738
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (3 moduli)",
+            "importo_eur": -3032
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 30706
+      }
+    }
+  },
+  {
+    "name": "Brera P, 01P (crescita su P, min 2 moduli), H20 explicit",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "01P",
+      "P_richiesta_cm": 1000,
+      "L_richiesta_cm": 300,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200,
+      "opzione_tecnica": "H20"
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera P",
+        "variante_montaggio": "01P autoportante",
+        "opzione_tecnica": "H20",
+        "orientamento_crescita": "P",
+        "n_moduli": 2,
+        "L_modulo_cm": 300,
+        "P_modulo_cm": 500,
+        "L_totale_effettiva_cm": 300,
+        "P_totale_effettiva_cm": 1000,
+        "n_lame": 23,
+        "voci_costo": [
+          {
+            "descrizione": "2 x modulo 300cm x 500cm (14351.00 EUR/modulo)",
+            "importo_eur": 28702
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (2 moduli)",
+            "importo_eur": -758
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 27944
+      }
+    }
+  },
+  {
+    "name": "Brera S, 01L, H20 explicit",
+    "input": {
+      "sotto_modello": "S",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 260,
+      "L_richiesta_cm": 300,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200,
+      "opzione_tecnica": "H20"
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera S",
+        "variante_montaggio": "01L autoportante",
+        "opzione_tecnica": "H20",
+        "orientamento_crescita": "L",
+        "n_moduli": 1,
+        "L_modulo_cm": 300,
+        "P_modulo_cm": 260,
+        "L_totale_effettiva_cm": 300,
+        "P_totale_effettiva_cm": 260,
+        "n_lame": 11,
+        "voci_costo": [
+          {
+            "descrizione": "1 x modulo 300cm x 260cm (8679.00 EUR/modulo)",
+            "importo_eur": 8679
+          }
+        ],
+        "avvisi_count": 1,
+        "prezzo_totale_eur": 8679
+      }
+    }
+  },
+  {
+    "name": "Brera S, 03P (muro lato P, min 2 moduli), H30 explicit",
+    "input": {
+      "sotto_modello": "S",
+      "variante_montaggio": "03P",
+      "P_richiesta_cm": 900,
+      "L_richiesta_cm": 350,
+      "colore_struttura": "RAL 9006 Alluminio brillante opaco",
+      "colore_plastica": "Grigio ferro",
+      "altezza_montanti_cm": 260,
+      "opzione_tecnica": "H30"
+    },
+    "expected": {
+      "success": true,
+      "output": {
+        "sotto_modello": "Brera S",
+        "variante_montaggio": "03P a muro lato profondità P",
+        "opzione_tecnica": "H30",
+        "orientamento_crescita": "P",
+        "n_moduli": 2,
+        "L_modulo_cm": 360,
+        "P_modulo_cm": 455,
+        "L_totale_effettiva_cm": 360,
+        "P_totale_effettiva_cm": 910,
+        "n_lame": 21,
+        "voci_costo": [
+          {
+            "descrizione": "2 x modulo 360cm x 455cm (13691.00 EUR/modulo)",
+            "importo_eur": 27382
+          },
+          {
+            "descrizione": "Detrazione/adeguamento per accoppiamento (2 moduli)",
+            "importo_eur": -1355
+          },
+          {
+            "descrizione": "Supplemento montante H=260cm (>250cm)",
+            "importo_eur": 21.3
+          }
+        ],
+        "avvisi_count": 2,
+        "prezzo_totale_eur": 26048.3
+      }
+    }
+  },
+  {
+    "name": "error: altezza exceeds H_max_cm for Brera S (270)",
+    "input": {
+      "sotto_modello": "S",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 260,
+      "L_richiesta_cm": 300,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 290,
+      "opzione_tecnica": "H20"
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Altezza richiesta (290 cm) supera il massimo per Brera S (270 cm)."
+    }
+  },
+  {
+    "name": "error: L per modulo exceeds H20 L_max_cm (350)",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "01L",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 400,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200,
+      "opzione_tecnica": "H20",
+      "n_moduli": 1
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Larghezza per modulo (400.0 cm) supera il massimo consentito dall'opzione tecnica 'H20' (350 cm)."
+    }
+  },
+  {
+    "name": "error: invalid variante_montaggio",
+    "input": {
+      "sotto_modello": "P",
+      "variante_montaggio": "99Z",
+      "P_richiesta_cm": 300,
+      "L_richiesta_cm": 300,
+      "colore_struttura": "RAL 9016 Bianco sablé",
+      "colore_plastica": "Bianco",
+      "altezza_montanti_cm": 200
+    },
+    "expected": {
+      "success": false,
+      "error_message": "Variante di montaggio '99Z' non trovata. Disponibili: ['01L', '02L', '03L', '01P', '02P', '03P']"
+    }
+  }
+]

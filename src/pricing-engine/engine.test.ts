@@ -1,0 +1,118 @@
+import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+import { catalogDatabaseSchema, priceMatricesSchema } from "../schema/catalog.js";
+import { PergolaEngine } from "./engine.js";
+import { ConfiguratoreError } from "./errors.js";
+import type { ConfiguraInput } from "./types.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const fixturesDir = join(__dirname, "../../fixtures");
+
+function loadJson(relativePath: string): unknown {
+  return JSON.parse(readFileSync(join(fixturesDir, relativePath), "utf-8"));
+}
+
+interface GoldenCase {
+  name: string;
+  input: {
+    sotto_modello: string;
+    variante_montaggio: string;
+    P_richiesta_cm: number;
+    L_richiesta_cm: number;
+    colore_struttura: string;
+    colore_plastica: string;
+    altezza_montanti_cm: number;
+    opzione_tecnica?: string;
+    n_moduli?: number;
+  };
+  expected:
+    | {
+        success: true;
+        output: {
+          sotto_modello: string;
+          variante_montaggio: string;
+          opzione_tecnica: string;
+          orientamento_crescita: "L" | "P";
+          n_moduli: number;
+          L_modulo_cm: number;
+          P_modulo_cm: number;
+          L_totale_effettiva_cm: number;
+          P_totale_effettiva_cm: number;
+          n_lame: number;
+          voci_costo: { descrizione: string; importo_eur: number }[];
+          avvisi_count: number;
+          prezzo_totale_eur: number;
+        };
+      }
+    | { success: false; error_message: string };
+}
+
+function toEngineInput(gc: GoldenCase["input"]): ConfiguraInput {
+  return {
+    sottoModello: gc.sotto_modello,
+    varianteMontaggio: gc.variante_montaggio,
+    pRichiestaCm: gc.P_richiesta_cm,
+    lRichiestaCm: gc.L_richiesta_cm,
+    coloreStruttura: gc.colore_struttura,
+    colorePlastica: gc.colore_plastica,
+    altezzaMontantiCm: gc.altezza_montanti_cm,
+    opzioneTecnica: gc.opzione_tecnica,
+    nModuli: gc.n_moduli,
+  };
+}
+
+/**
+ * Golden output source: packages/pricing-engine/scripts/generate_golden_fixtures.py,
+ * which runs the ALREADY-VALIDATED prototype/pergola_engine.py. Numeric outputs
+ * (prices, dimensions, counts) are compared exactly. Cost-line descriptions are
+ * checked by count only, not by exact string, since formatted-text equality
+ * across Python/TS isn't load-bearing for pricing correctness.
+ */
+function runSuite(productLabel: string, catalogDir: string) {
+  describe(`PergolaEngine — ${productLabel}`, () => {
+    const db = catalogDatabaseSchema.parse(loadJson(`${catalogDir}/database.json`));
+    const priceMatrices = priceMatricesSchema.parse(loadJson(`${catalogDir}/price_matrices.json`));
+    const engine = PergolaEngine.fromDatabase(db, priceMatrices);
+    const goldenCases = loadJson(`${catalogDir}/golden_cases.json`) as GoldenCase[];
+
+    for (const gc of goldenCases) {
+      it(gc.name, () => {
+        if (gc.expected.success) {
+          const expected = gc.expected.output;
+          const result = engine.configura(toEngineInput(gc.input));
+
+          expect(result.sotto_modello).toBe(expected.sotto_modello);
+          expect(result.variante_montaggio).toBe(expected.variante_montaggio);
+          expect(result.opzione_tecnica).toBe(expected.opzione_tecnica);
+          expect(result.orientamento_crescita).toBe(expected.orientamento_crescita);
+          expect(result.n_moduli).toBe(expected.n_moduli);
+          expect(result.L_modulo_cm).toBe(expected.L_modulo_cm);
+          expect(result.P_modulo_cm).toBe(expected.P_modulo_cm);
+          expect(result.L_totale_effettiva_cm).toBe(expected.L_totale_effettiva_cm);
+          expect(result.P_totale_effettiva_cm).toBe(expected.P_totale_effettiva_cm);
+          expect(result.n_lame).toBe(expected.n_lame);
+          expect(result.voci_costo).toHaveLength(expected.voci_costo.length);
+          expect(result.voci_costo.map((v) => v.importo_eur)).toEqual(
+            expected.voci_costo.map((v) => v.importo_eur),
+          );
+          expect(result.avvisi).toHaveLength(expected.avvisi_count);
+          expect(result.prezzo_totale_eur).toBe(expected.prezzo_totale_eur);
+        } else {
+          expect(() => engine.configura(toEngineInput(gc.input))).toThrow(ConfiguratoreError);
+          try {
+            engine.configura(toEngineInput(gc.input));
+            expect.unreachable();
+          } catch (err) {
+            expect(err).toBeInstanceOf(ConfiguratoreError);
+            expect((err as ConfiguratoreError).message).toBe(gc.expected.error_message);
+          }
+        }
+      });
+    }
+  });
+}
+
+runSuite("Vision (single sotto-modello, single variante)", "vision");
+runSuite("Brera (2 sotto-modelli x 6 varianti x 2 opzioni)", "brera");
