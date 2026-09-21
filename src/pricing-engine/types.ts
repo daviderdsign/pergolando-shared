@@ -41,4 +41,6 @@ export interface ConfiguraInput {
   altezzaMontantiCm: number;
   opzioneTecnica?: string;
   nModuli?: number;
+  /** Keys into sottoModello.opzioni_prezzo_fisso — each adds its own voce_costo. */
+  opzioniPrezzoFisso?: string[];
 }
