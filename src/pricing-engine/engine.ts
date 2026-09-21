@@ -306,6 +306,19 @@ export class PergolaEngine {
       );
     }
 
+    for (const key of input.opzioniPrezzoFisso ?? []) {
+      const opzione = sm.opzioni_prezzo_fisso?.[key];
+      if (!opzione) {
+        throw new ConfiguratoreError(
+          `Opzione a prezzo fisso '${key}' non trovata. Disponibili: ${pyListRepr(Object.keys(sm.opzioni_prezzo_fisso ?? {}))}`,
+        );
+      }
+      voci.push({ descrizione: opzione.nome, importo_eur: opzione.prezzo_eur });
+      if (opzione.vincolo) {
+        avvisi.push(`'${opzione.nome}': ${opzione.vincolo} — verificare che la configurazione rispetti questo vincolo.`);
+      }
+    }
+
     const prezzoTotaleEur = round2(voci.reduce((sum, v) => sum + v.importo_eur, 0));
 
     return {

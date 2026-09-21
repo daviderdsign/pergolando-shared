@@ -116,3 +116,66 @@ function runSuite(productLabel: string, catalogDir: string) {
 
 runSuite("Vision (single sotto-modello, single variante)", "vision");
 runSuite("Brera (2 sotto-modelli x 6 varianti x 2 opzioni)", "brera");
+
+/**
+ * opzioni_prezzo_fisso has no Python-prototype golden fixture (it's a new
+ * field, not in prototype/pergola_engine.py) — hand-written instead, layered
+ * on top of a known-good Brera baseline case so the base price is trusted.
+ */
+describe("PergolaEngine — opzioni_prezzo_fisso (flat-priced add-ons)", () => {
+  const db = catalogDatabaseSchema.parse(loadJson("brera/database.json"));
+  const priceMatrices = priceMatricesSchema.parse(loadJson("brera/price_matrices.json"));
+  db.sotto_modelli.P!.opzioni_prezzo_fisso = {
+    telis1io: { nome: "Telis 1 io", prezzo_eur: 180 },
+    comandoManuale: {
+      nome: "Detrazione comando manuale",
+      prezzo_eur: -555,
+      vincolo: "sporgenza massima 350cm",
+    },
+  };
+  const engine = PergolaEngine.fromDatabase(db, priceMatrices);
+
+  const baseInput: ConfiguraInput = {
+    sottoModello: "P",
+    varianteMontaggio: "01L",
+    pRichiestaCm: 300,
+    lRichiestaCm: 200,
+    coloreStruttura: "RAL 9016 Bianco sablé",
+    colorePlastica: "Bianco",
+    altezzaMontantiCm: 200,
+    opzioneTecnica: "H20",
+  };
+
+  it("adds a voce_costo and the price for a selected option", () => {
+    const result = engine.configura({ ...baseInput, opzioniPrezzoFisso: ["telis1io"] });
+    expect(result.voci_costo).toHaveLength(2);
+    expect(result.voci_costo[1]).toEqual({ descrizione: "Telis 1 io", importo_eur: 180 });
+    expect(result.prezzo_totale_eur).toBe(9290 + 180);
+  });
+
+  it("supports a negative price (detrazione) and surfaces its vincolo as an avviso", () => {
+    const result = engine.configura({ ...baseInput, opzioniPrezzoFisso: ["comandoManuale"] });
+    expect(result.prezzo_totale_eur).toBe(9290 - 555);
+    expect(result.avvisi.some((a) => a.includes("sporgenza massima 350cm"))).toBe(true);
+  });
+
+  it("stacks multiple selected options", () => {
+    const result = engine.configura({
+      ...baseInput,
+      opzioniPrezzoFisso: ["telis1io", "comandoManuale"],
+    });
+    expect(result.prezzo_totale_eur).toBe(9290 + 180 - 555);
+  });
+
+  it("throws for an unknown option key", () => {
+    expect(() =>
+      engine.configura({ ...baseInput, opzioniPrezzoFisso: ["nonEsiste"] }),
+    ).toThrow(ConfiguratoreError);
+  });
+
+  it("leaves existing behavior untouched when omitted", () => {
+    const result = engine.configura(baseInput);
+    expect(result.voci_costo).toHaveLength(1);
+    expect(result.prezzo_totale_eur).toBe(9290);
+  });
+});

@@ -118,6 +118,20 @@ const varianteMontaggioSchema = z
       "varianteMontaggio must define L_max_per_n_moduli (orientamento L) or P_max_per_n_moduli (orientamento P)",
   });
 
+/**
+ * A flat-priced add-on independent of the L×P matrix (e.g. a radio control
+ * unit, or a deduction for a manual control) — added to the total as its own
+ * voce_costo when selected, unlike the matrix price which varies by L/P.
+ * `vincolo` is informational only (e.g. "sporgenza massima 350cm"): the
+ * engine surfaces it as an avviso rather than validating it, since it's
+ * free text from the listino, not a structured constraint.
+ */
+const opzionePrezzoFissoSchema = z.object({
+  nome: z.string(),
+  prezzo_eur: z.number(),
+  vincolo: z.string().optional(),
+});
+
 const sottoModelloSchema = z
   .object({
     nome: z.string(),
@@ -128,6 +142,7 @@ const sottoModelloSchema = z
     supplementi: supplementiSchema,
     varianti_montaggio: z.record(z.string(), varianteMontaggioSchema),
     motore_incluso_nel_prezzo: z.boolean(),
+    opzioni_prezzo_fisso: z.record(z.string(), opzionePrezzoFissoSchema).optional(),
   })
   .refine((v) => Boolean(v.opzioni_tecniche_lama) || Boolean(v.opzioni_tecniche), {
     message: "sottoModello must define opzioni_tecniche_lama or opzioni_tecniche",
@@ -155,3 +170,4 @@ export type PriceMatrices = z.infer<typeof priceMatricesSchema>;
 export type SottoModello = z.infer<typeof sottoModelloSchema>;
 export type VarianteMontaggio = z.infer<typeof varianteMontaggioSchema>;
 export type MatriceRiga = z.infer<typeof matriceRigaSchema>;
+export type OpzionePrezzoFisso = z.infer<typeof opzionePrezzoFissoSchema>;
