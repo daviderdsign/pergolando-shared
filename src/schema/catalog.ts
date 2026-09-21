@@ -132,6 +132,21 @@ const opzionePrezzoFissoSchema = z.object({
   vincolo: z.string().optional(),
 });
 
+/**
+ * An accessory priced per the SAME P_riferimento row or L column already
+ * matched for the base structure price (e.g. Trave Laterale varies by
+ * sporgenza, Frangivento intermedio aggiuntivo by larghezza) — looked up
+ * with the exact key the engine already resolved for the base price, so it
+ * always stays consistent with whichever P/L bucket the configuration fell
+ * into. Not a general P×L matrix like the base price: only one dimension.
+ */
+const accessorioSchema = z.object({
+  nome: z.string(),
+  indicizzato_per: z.enum(["sporgenza", "larghezza"]),
+  /** Keys are numeric strings — P_riferimento (cm) or L column (cm), matching indicizzato_per. */
+  prezzi: z.record(z.string(), z.number()),
+});
+
 const sottoModelloSchema = z
   .object({
     nome: z.string(),
@@ -143,6 +158,7 @@ const sottoModelloSchema = z
     varianti_montaggio: z.record(z.string(), varianteMontaggioSchema),
     motore_incluso_nel_prezzo: z.boolean(),
     opzioni_prezzo_fisso: z.record(z.string(), opzionePrezzoFissoSchema).optional(),
+    accessori: z.record(z.string(), accessorioSchema).optional(),
   })
   .refine((v) => Boolean(v.opzioni_tecniche_lama) || Boolean(v.opzioni_tecniche), {
     message: "sottoModello must define opzioni_tecniche_lama or opzioni_tecniche",
@@ -171,3 +187,4 @@ export type SottoModello = z.infer<typeof sottoModelloSchema>;
 export type VarianteMontaggio = z.infer<typeof varianteMontaggioSchema>;
 export type MatriceRiga = z.infer<typeof matriceRigaSchema>;
 export type OpzionePrezzoFisso = z.infer<typeof opzionePrezzoFissoSchema>;
+export type Accessorio = z.infer<typeof accessorioSchema>;

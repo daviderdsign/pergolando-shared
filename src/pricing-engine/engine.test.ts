@@ -179,3 +179,77 @@ describe("PergolaEngine — opzioni_prezzo_fisso (flat-priced add-ons)", () => {
     expect(result.prezzo_totale_eur).toBe(9290);
   });
 });
+
+/**
+ * Same treatment as opzioni_prezzo_fisso above — no Python-prototype golden
+ * fixture, hand-written on top of the same trusted Brera baseline (P=300 ->
+ * resolves to P_riferimento 310, L=200 -> resolves to column 200).
+ */
+describe("PergolaEngine — accessori (P/L-indexed add-ons)", () => {
+  const db = catalogDatabaseSchema.parse(loadJson("brera/database.json"));
+  const priceMatrices = priceMatricesSchema.parse(loadJson("brera/price_matrices.json"));
+  db.sotto_modelli.P!.accessori = {
+    traveLaterale: {
+      nome: "Trave Laterale",
+      indicizzato_per: "sporgenza",
+      prezzi: { "310": 168 },
+    },
+    frangiventoIntermedio: {
+      nome: "Frangivento intermedio aggiuntivo",
+      indicizzato_per: "larghezza",
+      prezzi: { "200": 48 },
+    },
+  };
+  const engine = PergolaEngine.fromDatabase(db, priceMatrices);
+
+  const baseInput: ConfiguraInput = {
+    sottoModello: "P",
+    varianteMontaggio: "01L",
+    pRichiestaCm: 300,
+    lRichiestaCm: 200,
+    coloreStruttura: "RAL 9016 Bianco sablé",
+    colorePlastica: "Bianco",
+    altezzaMontantiCm: 200,
+    opzioneTecnica: "H20",
+  };
+
+  it("prices a sporgenza-indexed accessory against the already-matched P_riferimento row", () => {
+    const result = engine.configura({ ...baseInput, accessoriSelezionati: ["traveLaterale"] });
+    expect(result.voci_costo[1]).toEqual({ descrizione: "Trave Laterale", importo_eur: 168 });
+    expect(result.prezzo_totale_eur).toBe(9290 + 168);
+  });
+
+  it("prices a larghezza-indexed accessory against the already-matched L column", () => {
+    const result = engine.configura({ ...baseInput, accessoriSelezionati: ["frangiventoIntermedio"] });
+    expect(result.voci_costo[1]).toEqual({
+      descrizione: "Frangivento intermedio aggiuntivo",
+      importo_eur: 48,
+    });
+    expect(result.prezzo_totale_eur).toBe(9290 + 48);
+  });
+
+  it("stacks multiple accessories", () => {
+    const result = engine.configura({
+      ...baseInput,
+      accessoriSelezionati: ["traveLaterale", "frangiventoIntermedio"],
+    });
+    expect(result.prezzo_totale_eur).toBe(9290 + 168 + 48);
+  });
+
+  it("throws for an unknown accessory key", () => {
+    expect(() => engine.configura({ ...baseInput, accessoriSelezionati: ["nonEsiste"] })).toThrow(
+      ConfiguratoreError,
+    );
+  });
+
+  it("throws when the accessory has no price for the matched bucket", () => {
+    const dbNoPrice = catalogDatabaseSchema.parse(loadJson("brera/database.json"));
+    dbNoPrice.sotto_modelli.P!.accessori = {
+      traveLaterale: { nome: "Trave Laterale", indicizzato_per: "sporgenza", prezzi: { "999": 1 } },
+    };
+    const engineNoPrice = PergolaEngine.fromDatabase(dbNoPrice, priceMatrices);
+    expect(() =>
+      engineNoPrice.configura({ ...baseInput, accessoriSelezionati: ["traveLaterale"] }),
+    ).toThrow(ConfiguratoreError);
+  });
+});
