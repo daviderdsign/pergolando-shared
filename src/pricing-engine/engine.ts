@@ -319,6 +319,28 @@ export class PergolaEngine {
       }
     }
 
+    // Priced against the SAME P_riferimento row / L column already matched
+    // for the base structure price — never re-resolved independently, so an
+    // accessory can never end up priced for a different bucket than the
+    // structure itself.
+    for (const key of input.accessoriSelezionati ?? []) {
+      const accessorio = sm.accessori?.[key];
+      if (!accessorio) {
+        throw new ConfiguratoreError(
+          `Accessorio '${key}' non trovato. Disponibili: ${pyListRepr(Object.keys(sm.accessori ?? {}))}`,
+        );
+      }
+      const lookupKey =
+        accessorio.indicizzato_per === "sporgenza" ? String(pEffettiva) : String(lEffettivaModulo);
+      const prezzo = accessorio.prezzi[lookupKey];
+      if (prezzo === undefined) {
+        throw new ConfiguratoreError(
+          `Prezzo per l'accessorio '${accessorio.nome}' non disponibile per questa configurazione (${accessorio.indicizzato_per} ${lookupKey}cm).`,
+        );
+      }
+      voci.push({ descrizione: accessorio.nome, importo_eur: prezzo });
+    }
+
     const prezzoTotaleEur = round2(voci.reduce((sum, v) => sum + v.importo_eur, 0));
 
     return {

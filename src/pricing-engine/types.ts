@@ -43,4 +43,6 @@ export interface ConfiguraInput {
   nModuli?: number;
   /** Keys into sottoModello.opzioni_prezzo_fisso — each adds its own voce_costo. */
   opzioniPrezzoFisso?: string[];
+  /** Keys into sottoModello.accessori — each adds its own voce_costo. */
+  accessoriSelezionati?: string[];
 }
