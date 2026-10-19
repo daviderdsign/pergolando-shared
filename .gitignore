@@ -5,3 +5,9 @@ coverage/
 *.tsbuildinfo
 __pycache__/
 .env
+.env.*
+!.env.example
+*.sqlite
+*.db
+*.pem
+*.key
